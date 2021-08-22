@@ -22,6 +22,9 @@ html{
   padding: 0;
   background-color: lightblue;
   font-family: sans-serif;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 div {
