@@ -1,0 +1,170 @@
+@keyframes loading1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes loading2 {
+  0% {
+    transform: scale(0, 1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+html{
+  height: 98%;
+  margin: 0;
+  padding: 0;
+  background-color: lightblue;
+  font-family: sans-serif;
+}
+
+div {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  animation: loading1 1.8s;
+  margin: 0 50px;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 50px 1fr 20px 5fr 20px 70px 50px;
+  place-items: center;
+  vertical-align: middle;
+}
+
+.header {
+  margin: 0;
+  font-size: 4vw;
+  position: relative;
+}
+
+.header::before {
+  width: 100%;
+  content: '';
+  bottom: 0;
+  position: absolute;
+  animation: loading2 1s forwards;
+  border-bottom: solid 2px blue;
+}
+
+.select_menu {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-rows: auto;
+}
+
+.row {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  place-items: center;
+}
+
+.dummy_btn {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  background-color: gray;
+  font-size: 3vw;
+  color: white;
+  border: solid 2px gray;
+  border-radius: 20px;
+}
+
+.yes_btn {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  background-color: deepskyblue;
+  font-size: 3vw;
+  color: white;
+  border: solid 2px deepskyblue;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.yes_btn:hover {
+  height: 82%;
+  width: 82%;
+}
+
+.yes_btn:active {
+  height: 80%;
+  width: 80%;
+}
+
+.no_btn {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 80%;
+  background-color: darkgray;
+  font-size: 3vw;
+  color: white;
+  border: solid 2px darkgray;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.no_btn:hover {
+  height: 82%;
+  width: 82%;
+}
+
+.no_btn:active {
+  height: 80%;
+  width: 80%;
+}
+
+.next_btn {
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80%;
+  width: 40%;
+  background-color: deepskyblue;
+  font-size: 2.5vw;
+  color: white;
+  border: solid 2px deepskyblue;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.next_btn:hover {
+  height: 82%;
+  width: 42%;
+}
+
+.next_btn:active {
+  height: 80%;
+  width: 40%;
+}

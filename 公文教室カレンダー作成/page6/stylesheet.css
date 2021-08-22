@@ -1,0 +1,65 @@
+@keyframes loading1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+html,body {
+  height: 99%
+}
+
+html {
+  background-color: lightblue;
+}
+
+body {
+  animation: loading1 1.8s;
+}
+
+#canvas {
+  background-color: white;
+  display: block;
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0;
+  cursor: pointer;
+
+}
+
+.btn {
+  margin: 0;
+  padding: 0;
+  top: 10%;
+  left: 80%;
+  position: absolute;
+  z-index: 10;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  line-height: 2em;
+  height: 50px;
+  width: 200px;
+  background-color: deepskyblue;
+  font-size: 2vw;
+  color: white;
+  border: solid 2px deepskyblue;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  line-height: 2.1em;
+  height: 52px;
+  width: 202px;
+}
+
+.btn:active {
+  height: 50px;
+  width: 200px;
+}
