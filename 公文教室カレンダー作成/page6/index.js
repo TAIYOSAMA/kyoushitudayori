@@ -31,34 +31,32 @@ const DrawText = function(text,x,y,x1,y1,fontSize=32,color='black') {
   ctx.textBaseline = 'center';
 	ctx.textAlign = 'center';
   ctx.fillStyle = color;
-  ctx.font = String(fontSize)+'px serif';
+  ctx.font = String(fontSize)+'px sans-serif';
   ctx.fillText(String(text),x,y);
 };
 
 const DrawCircle = function(default_x,default_y,radius,thickness=4,color='black') {
   ctx.beginPath();
-  ctx.moveTo(default_x-radius,default_y);
-  var y = default_y;
-  for (let x=-radius; x<=radius; x++) {
-    y = Math.sqrt(radius**2-x**2);
-    ctx.lineTo(default_x+x,default_y+y);
-  };
-  for (let x=radius; x>=-radius; x--) {
-    y = -Math.sqrt(radius**2-x**2);
-    ctx.lineTo(default_x+x,default_y+y);
-  };
+  ctx.moveTo(default_x+radius,default_y);
+  let x;
+  let y;
+  for (let angle=0; angle<=360; angle++) {
+    x = Math.cos(angle)*radius + default_x;
+    y = Math.sin(angle)*radius + default_y;
+    ctx.lineTo(x,y);
+  }
   ctx.strokeStyle = color;
   ctx.lineWidth = thickness;
   ctx.stroke();
 };
 
-const DrawCross = function(x,y,x1,y1,thickness=4,size=100,color='black') {
+const DrawCross = function(x,y,thickness=4,size=100,color='black') {
   ctx.beginPath();
   ctx.moveTo(x+size/2,y+size/2);
   ctx.lineTo(x-size/2,y-size/2);
   ctx.moveTo(x+size/2,y-size/2);
   ctx.lineTo(x-size/2,y+size/2);
-  ctx.lineWidth = thickness;
+  ctx.lineWidth = thickness*2;
   ctx.strokeStyle = color;
   ctx.stroke();
 };
@@ -235,18 +233,26 @@ for (let i=0; i<holidays_name.length; i++) {
 // ○と×を入力
 var x = 0;
 var y = 1;
+thickness = 5;
+let draw_x;
+let draw_y;
+let j;
 for (let day=-day_start+1; day<=days; day++) {
+  draw_x = calendar_start_x + calendar_cell_width * (x + 1/2) ;
+  draw_y = calendar_start_y + calendar_cell_height * (y + 1/2) ;
   for (let i=0; i<kyoshitubi.length; i++) {
     if (kyoshitubi[i]==day) {
-      for (let j=0; j<kyoshitu_holiday.length; j++) {
-        if (kyoshitu_holiday[j]!=day) {
-          var chr = '○';
-        } else {
-          var chr = '×';
+      for (j=0; j<kyoshitu_holiday.length; j++) {
+        if (kyoshitu_holiday[j]==day) {
+          DrawCross(draw_x,draw_y,thickness,52);
           break;
         };
       };
-      DrawText(chr,calendar_start_x+calendar_cell_width*x,calendar_start_y+calendar_cell_height*y,calendar_start_x+calendar_cell_width*(x+1),calendar_start_y+calendar_cell_height*(y+1)+calendar_cell_height*0.322,calendar_cell_height*1.093);
+      if (kyoshitu_holiday[j]!=day) {
+        console.log(j);
+        DrawCircle(draw_x,draw_y,37,thickness);
+        break;
+      };
     };
   };
   x++;
